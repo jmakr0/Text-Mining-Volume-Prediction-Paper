@@ -21,6 +21,8 @@
 %\setcopyright{cagovmixed}
 
 
+
+
 \begin{document}
 \title{Comment Volume Prediction on News Articles}
 \subtitle{Extended Abstract} % do we need that?
@@ -129,22 +131,45 @@
 \begin{table}[]
 \centering
 \label{tbl:heatwheel_res}
-\begin{tabular}{lcccc}
+\begin{tabular}{lccccc}
 \toprule
 % \textbf{Features} &
-\specialcellbold{Short description} &
+\specialcellbold{Input} &
+\specialcellbold{Architecture} &
+\specialcellbold{ID} &
+\specialcellbold{P} &
+\specialcellbold{R} &
+\specialcellbold{F1} \\
+\midrule
+headline & FC & 1 & .216 & .606  & .309  \\
+headline & CNN & 2 & .221 & .603  & .314  \\
+article & LSTM  & 3 & .228 & .493  & .302  \\
+category & FC & 4 & .227 & .603  & .320  \\
+time & FC  & 5 & .100 & .457  & .155  \\
+text metrics & FC  & 6 & .133 & .738  & .222  \\
+competitive score & FC & 7 & .112 & .917  & .197  \\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[]
+\centering
+\label{tbl:heatwheel_res}
+\begin{tabular}{cccc}
+\toprule
+% \textbf{Features} &
+% \specialcellbold{Short description} &
 \specialcellbold{Model ID} &
 \specialcellbold{P} &
 \specialcellbold{R} &
 \specialcellbold{F1} \\
 \midrule
-headline dense & 1 & .216 & .606  & .309  \\
-headline conv & 2 & .221 & .603  & .314  \\
-article lstm  & 4 & .228 & .493  & .302  \\
-category  & 6 & .227 & .603  & .320  \\
-time  & 7 & .100 & .457  & .155  \\
-text metrics  & 8 & .133 & .738  & .222  \\
-comp score  & 9 & .112 & .917  & .197  \\
+23 & .224 & .645 & .323\\
+24 & .245 & .627 & .342\\
+25 & .227 & .581 & .317 \\
+26 & .217 & .651 & .317\\
+27 & .214 & .625 & .311\\
+34 & .252 & .577 & .339\\
+234 & .265 & .607 & .357\\
 \bottomrule
 \end{tabular}
 \end{table}
