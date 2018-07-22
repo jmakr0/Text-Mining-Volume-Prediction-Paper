@@ -2,6 +2,13 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{booktabs} % For formal tables
+\usepackage{array}
+\newcommand*\rotbf[1]{\rotatebox{90}{\textbf{#1}}}
+\newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
+\newcommand{\specialcellbold}[2][c]{%
+  \bfseries
+  \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}%
+}
 
 % Copyright
 %\setcopyright{none}
@@ -12,6 +19,8 @@
 %\setcopyright{usgovmixed}
 %\setcopyright{cagov}
 %\setcopyright{cagovmixed}
+
+
 
 
 \begin{document}
@@ -119,6 +128,52 @@
 
 
 \section{Evaluation}
+\begin{table}[]
+\centering
+\label{tbl:heatwheel_res}
+\begin{tabular}{lccccc}
+\toprule
+% \textbf{Features} &
+\specialcellbold{Input} &
+\specialcellbold{Architecture} &
+\specialcellbold{ID} &
+\specialcellbold{P} &
+\specialcellbold{R} &
+\specialcellbold{F1} \\
+\midrule
+headline & FC & 1 & .216 & .606  & .309  \\
+headline & CNN & 2 & .221 & .603  & .314  \\
+article & LSTM  & 3 & .228 & .493  & .302  \\
+category & FC & 4 & .227 & .603  & .320  \\
+time & FC  & 5 & .100 & .457  & .155  \\
+text metrics & FC  & 6 & .133 & .738  & .222  \\
+competitive score & FC & 7 & .112 & .917  & .197  \\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[]
+\centering
+\label{tbl:heatwheel_res}
+\begin{tabular}{cccc}
+\toprule
+% \textbf{Features} &
+% \specialcellbold{Short description} &
+\specialcellbold{Model ID} &
+\specialcellbold{P} &
+\specialcellbold{R} &
+\specialcellbold{F1} \\
+\midrule
+23 & .224 & .645 & .323\\
+24 & .245 & .627 & .342\\
+25 & .227 & .581 & .317 \\
+26 & .217 & .651 & .317\\
+27 & .214 & .625 & .311\\
+34 & .252 & .577 & .339\\
+234 & .265 & .607 & .357\\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{Metrics}
 % which metrics and why we used them
 % cite other evaluation metrics
