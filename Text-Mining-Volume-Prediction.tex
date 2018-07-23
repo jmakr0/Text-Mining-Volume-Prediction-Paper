@@ -109,15 +109,36 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 \maketitle
 
 \section{Introduction}
-\subsection{Motivation and Goal}
+% \subsection{Motivation and Goal}
 
-\subsection{Related Work}
+% \subsection{Related Work}
 
 
 \section{Dataset}
-\subsection{Description}
+For the project we use a dataset that contains approximate $547$ K articles TODO API <-> given
+
+with $58.6$ million comments received from the API of the British newspaper \textit{The Guardian}. In the following, we call this dataset the Guardian Article and Comment Corpus (GACC).
+
+Between 2006 and 2017 $1.1$ million users wrote at least one comment, $22$\% more than $10$, and $6$\% over $100$.
+
+The GACC uses one out of $79$ categories for each article. In total, $18$\% of all articles are published under the category \textit{comment is free} which is used to debate contentious issues. Consequently, this category is also the most commented one. 
+Each of the others, e.g. \textit{sport}, \textit{music} and \textit{politics} covers less than $7$\% of the GACC.
+
+FEATURE DESCRIPTION.....
+For all articles in the GACC the following features are available: 
+- text headline and article text 
+- text meta: headline word count, article word count
+- article meta: category, compet score 
+- time meta: day of year, day of week, hour, minute
 
 \subsection{Data Cleaning}
+To avoid anomalies using the publication time feature, we removed the articles released on 29th of February.  
+
+The examination of the distribution of the number of comments exhibits a bizarre peak at exactly $50$ comments per article. Therefore, we had to removed more than 2\% of the given articles. 
+
+
+
+
 
 \subsection{Data Enrichment}
 % e.g. competitive score
@@ -128,51 +149,51 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 
 \section{Evaluation}
-\begin{table}[]
-\centering
-\label{tbl:heatwheel_res}
-\begin{tabular}{cccccc}
-\toprule
-% \textbf{Features} &
-\specialcellbold{ID} &
-\specialcellbold{Input} &
-\specialcellbold{Model} &
-\specialcellbold{P} &
-\specialcellbold{R} &
-\specialcellbold{F1} \\
-\midrule
-1 & headline & FC & .216 & .606  & .309  \\
-2 & headline & CNN & .221 & .603  & .314  \\
-3 & article & LSTM  & .228 & .493  & .302  \\
-4 & category & FC & .227 & .603  & .320  \\
-5 & time & FC  & .100 & .457  & .155  \\
-6 & text metrics & FC  & .133 & .738  & .222  \\
-7 & competitive score & FC & .112 & .917  & .197  \\
-\bottomrule
-\end{tabular}
-\end{table}
-\begin{table}[]
-\centering
-\label{tbl:heatwheel_res}
-\begin{tabular}{cccc}
-\toprule
-% \textbf{Features} &
-% \specialcellbold{Short description} &
-\specialcellbold{Combination} &
-\specialcellbold{P} &
-\specialcellbold{R} &
-\specialcellbold{F1} \\
-\midrule
-2 3 & .224 & .645 & .323\\
-2 4 & .245 & .627 & .342\\
-2 5 & .227 & .581 & .317 \\
-2 6 & .217 & .651 & .317\\
-2 7 & .214 & .625 & .311\\
-3 4 & .252 & .577 & .339\\
-2 3 4 & .265 & .607 & .357\\
-\bottomrule
-\end{tabular}
-\end{table}
+% \begin{table}[]
+% \centering
+% \label{tbl:heatwheel_res}
+% \begin{tabular}{cccccc}
+% \toprule
+% % \textbf{Features} &
+% \specialcellbold{ID} &
+% \specialcellbold{Input} &
+% \specialcellbold{Model} &
+% \specialcellbold{P} &
+% \specialcellbold{R} &
+% \specialcellbold{F1} \\
+% \midrule
+% 1 & headline & FC & .216 & .606  & .309  \\
+% 2 & headline & CNN & .221 & .603  & .314  \\
+% 3 & article & LSTM  & .228 & .493  & .302  \\
+% 4 & category & FC & .227 & .603  & .320  \\
+% 5 & time & FC  & .100 & .457  & .155  \\
+% 6 & text metrics & FC  & .133 & .738  & .222  \\
+% 7 & competitive score & FC & .112 & .917  & .197  \\
+% \bottomrule
+% \end{tabular}
+% \end{table}
+% \begin{table}[]
+% \centering
+% \label{tbl:heatwheel_res}
+% \begin{tabular}{cccc}
+% \toprule
+% % \textbf{Features} &
+% % \specialcellbold{Short description} &
+% \specialcellbold{Combination} &
+% \specialcellbold{P} &
+% \specialcellbold{R} &
+% \specialcellbold{F1} \\
+% \midrule
+% 2 3 & .224 & .645 & .323\\
+% 2 4 & .245 & .627 & .342\\
+% 2 5 & .227 & .581 & .317 \\
+% 2 6 & .217 & .651 & .317\\
+% 2 7 & .214 & .625 & .311\\
+% 3 4 & .252 & .577 & .339\\
+% 2 3 4 & .265 & .607 & .357\\
+% \bottomrule
+% \end{tabular}
+% \end{table}
 
 \subsection{Metrics}
 % which metrics and why we used them
