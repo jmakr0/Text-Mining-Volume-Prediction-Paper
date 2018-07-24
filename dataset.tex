@@ -1,0 +1,34 @@
+Our work is based on a dataset of the British newspaper \textit{The Guardian} that contains approximately $626$K article URLs with $61.5$M corresponding comments from $1.25$M authors. 
+The comment data provided us with the comment text itself, the author's reference, the timestamp when the comment was posted, a reference of the parent comment, and the number of upvotes. Additionally, we had the comment author's username and a dedicated reference. 
+
+The comments were posted between 2006 and 2017. All $1.25$M users wrote at least one comment, $22$\% of them more than $10$, and $6$\% over $100$.
+The given articles are published in one out of $79$ categories. In total, $18$\% of all released articles are published under the category \textit{comment is free} that is used to debate contentious issues. Consequently, this category is also the most commented one. 
+Each of the others, e.g. \textit{sport}, \textit{music}, and \textit{politics} covers less than $7$\% in the given dataset.
+
+We assume that the number of comments of a given article is an essential feature to predict the comment volume of similar articles in the future. Fortunately, this feature could be determined by simply counting the corresponding comments of each article. Afterwards, we were able to decide if a given article was in the top $10$\% of the most commented articles within its released week.
+
+\subsection{Data Cleaning}
+Analysing the dataset, we noticed that the distribution of the number of comments exhibited a bizarre peak at exactly $50$ comments per article. Therefore, we did not take these articles into account which reduced our dataset about $2$\% of the given articles.
+
+To avoid anomalies using features that we derived from the articles, e.g. the publication time, we removed all articles that were released on 29th of February.
+
+\subsection{Data enrichment}
+To enrich our dataset, we used the offical \textit{Guardian API} to get the article text and further attributes like the category, the headline, and the publication time.
+Due to API restrictions we were not able to download all articles which is why the amount of articles was reduced about $11$\%.
+Furthermore, we extracted metadata like the headline and article word count, the time data describing the day of the week, the day of the year, the hour and the minute of the publication date.
+
+We suppose that articles that are released at a similar time and discussing a related topic are likely to share the amount of comments. To take this behaviour into account, we've developed a \textit{competitive score} (\ref{eq:1}) as an additional feature.
+
+\begin{equation} \label{eq:1}
+	compet_i = \sum_{n=1}^{j} \frac{\sigma'(t_i - t_j)}{\norm{\overrightarrow{a_i} - \overrightarrow{{a_j}}}^2}, i \neq j
+\end{equation}
+
+\begin{flalign*}
+	\sigma&: \text{sigmoid function} & \\
+	t_i&: \text{publication date of article } i & \\
+	\overrightarrow{a_i}&: \text{doc2vec vector of article } i \text{ text}& \\
+\end{flalign*}
+
+The numerical value of $compet_i$ describes how many competitive articles exist to the given article $i$. First of all, we determine how close articles are published to each other over the time differerence of their publication date. 
+
+In the following, we call the cleaned and enriched dataset the Guardian Article and Comment Corpus (GACC). Finally, the GACC contains approximately $547$K articles with $58.6$M comments.

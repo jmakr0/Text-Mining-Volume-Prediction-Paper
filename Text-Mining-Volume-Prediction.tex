@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{booktabs} % For formal tables
 \usepackage{array}
+\usepackage{commath}
 \newcommand*\rotbf[1]{\rotatebox{90}{\textbf{#1}}}
 \newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
 \newcommand{\specialcellbold}[2][c]{%
@@ -20,11 +21,8 @@
 %\setcopyright{cagov}
 %\setcopyright{cagovmixed}
 
-
-
-
 \begin{document}
-\title{Comment Volume Prediction on News Articles}
+\title{Text Mining in Practice: Comment Volume Prediction}
 \subtitle{Extended Abstract} % do we need that?
 
 \author{Johannes M. Kroschewski}
@@ -115,33 +113,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 
 \section{Dataset}
-For the project we use a dataset that contains approximate $547$ K articles TODO API <-> given
-
-with $58.6$ million comments received from the API of the British newspaper \textit{The Guardian}. In the following, we call this dataset the Guardian Article and Comment Corpus (GACC).
-
-Between 2006 and 2017 $1.1$ million users wrote at least one comment, $22$\% more than $10$, and $6$\% over $100$.
-
-The GACC uses one out of $79$ categories for each article. In total, $18$\% of all articles are published under the category \textit{comment is free} which is used to debate contentious issues. Consequently, this category is also the most commented one. 
-Each of the others, e.g. \textit{sport}, \textit{music} and \textit{politics} covers less than $7$\% of the GACC.
-
-FEATURE DESCRIPTION.....
-For all articles in the GACC the following features are available: 
-- text headline and article text 
-- text meta: headline word count, article word count
-- article meta: category, compet score 
-- time meta: day of year, day of week, hour, minute
-
-\subsection{Data Cleaning}
-To avoid anomalies using the publication time feature, we removed the articles released on 29th of February.  
-
-The examination of the distribution of the number of comments exhibits a bizarre peak at exactly $50$ comments per article. Therefore, we had to removed more than 2\% of the given articles. 
-
-
-
-
-
-\subsection{Data Enrichment}
-% e.g. competitive score
+\input{dataset.tex}
 
 
 \section{Methodology}
