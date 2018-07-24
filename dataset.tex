@@ -1,0 +1,27 @@
+We start with a dataset from the British newspaper \textit{The Guardian} containing .... comments corresponding to one of .... articles from in total ... different authors. 
+For the comments features like the comment text itself, the timestamp, the parent comment and the number of upvotes are available. 
+For the author we just have the username and for the article we just have given the URL. 
+
+Keeping in mind our task of predicting the comment volume for a specific article before its release. We already could extract the most important feature which is the number of comments per article by simply count the corresponding comments. But besides that the given Dataset is not very useful because nearly all of the data is about the comments. In consequence we have to get more than the given feature article URLs as a basis for our given task.
+
+We use the guardian API to vastly enrich our Dataset. By doing that we could receive the features article text and headline. Moreover it is possible to get the category and the publication date of all received articles. At this time our dataset reduces by nearly ...\% of the articles because not for all of them we have the API permissions.
+
+\subsection{Data Cleaning}
+Analysing the newly available data it can be seen that the distribution of the number of comments exhibits a bizarre peak at exactly $50$ comments per article. Therefore, we decide to not take these article into account and reduce our dataset a second time. In numbers we remove more than 2\% of the given articles. 
+
+What is more is that we want to use several features derived by the articles publication time. So to avoid anomalies using this feature, we remove all articles released on 29th of February.
+
+\subsection{Data enrichment}
+After cleaning we enrich our dataset to on the one hand make analysing easier and on the other hand getting more features for our NNs.
+So in addition to the features given by the API or our first dataset we enrich it by extracting text metadata like headline and article word count and time data describing the day of the week, the day of the year, the hour and the minute of the publication date.
+
+To take into account that articles with similar topic and publication time will share the amount of received comments for each article we add an additional feature named \textit{competitive score}. It is calculated as follows...
+
+For the following we call our final cleaned and enriched dataset the Guardian Article and Comment Corpus (GACC). It contains approximate $547$ K articles with $58.6$ million comments. 
+
+Between 2006 and 2017 $1.1$ million users wrote at least one comment, $22$\% more than $10$, and $6$\% over $100$.
+
+The GACC uses one out of $79$ categories for each article. In total, $18$\% of all articles are published under the category \textit{comment is free} which is used to debate contentious issues. Consequently, this category is also the most commented one. 
+Each of the others, e.g. \textit{sport}, \textit{music} and \textit{politics} covers less than $7$\% of the GACC.
+
+
