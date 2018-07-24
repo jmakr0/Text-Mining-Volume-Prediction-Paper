@@ -1,4 +1,4 @@
-\subsection{Net Architecture}
+\subsection{Basic Net Architecture}
 
 We wanted to evaluate the quality of basic features. For some features we tried multiple different architectures to compare them among themselves. That resulted in seven \textit{basic models} (BM). Each of the models has an ID for referencing within the further text.
 All models have single or related features as input and generate a binary classification output using sigmoid as our activation function.
@@ -14,3 +14,6 @@ All models have single or related features as input and generate a binary classi
 \subsection{Training}
 We split the dataset in training, validation and test sets using a 70\%/15\%/15\% split with respect to the timestamps of publication. We chose this split because in a real world scenario the whole set would be used to train the model and predict on articles in the future (quote julian).
 Because our task implies a strongly imbalanced training set we used class weights. They influence the weighting of the loss while training indirectly proportional to the class size of a giving training sample.
+
+\subsection{Combined Net Architecture}
+We combined the BMs to use multiple features and improve our results. The decision on what models are combine worthy we calculated the correlations between each BM pair using the predictions for the test data set (fig). Furthermore we included the performance of each model in our consideration. Taking the correlations and the performance into account we decided on a larger set of combined models.The combined models share their classification layers but not the hidden layers.
