@@ -17,9 +17,9 @@ To enrich our dataset, we used the offical \textit{Guardian API} to get the arti
 Due to API restrictions we were not able to download all articles which is why the amount of articles was reduced about $11$\%.
 Furthermore, we extracted metadata like the headline and article word count, the time data describing the day of the week, the day of the year, the hour and the minute of the publication date.
 
-We suppose that articles that are released at a similar time and discussing a related topic are likely to share the amount of comments. To take this behaviour into account, we've developed a \textit{competitive score} (\ref{eq:1}) as an additional feature.
+We suppose that articles that are released at a similar time and discussing a related topic are likely to share the amount of comments. To take this behaviour into account, we've developed a \textit{competitive score} (\ref{eq:competitive_score}) as an additional feature.
 
-\begin{equation} \label{eq:1}
+\begin{equation} \label{eq:competitive_score}
 	compet_i = \sum_{n=1}^{j} \frac{\sigma'(t_i - t_j)}{\norm{\overrightarrow{a_i} - \overrightarrow{{a_j}}}^2}, i \neq j
 \end{equation}
 
@@ -31,6 +31,6 @@ We suppose that articles that are released at a similar time and discussing a re
 
 The numerical value of $compet_i$ describes how many competitive articles exist to the given article $i$. Thereby, the difference of the publication time of the given articles determines how close they are published to each other. For the calculation of this feature, we've considered all articles that were released within a timespan of $\pm3$h.
 In pratice, articles will be often published at the same time which implies that the time difference can be zero. This is also the reason why we apply the derivate of the sigmoid function in the numerator.
-To decide if articles are discussing a similar topic, we've trained \textit{doc2vec} DOC2VEC-REFERENCE on our article corpus and use the euclidean distance to calculate how similar articles to each other are. We square the distance in the denominator to increase the impact of the article similarity.
+To decide if articles are discussing a similar topic, we've trained the \textit{doc2vec} algorithm \cite{le2014doc2vec} on our article corpus and use the euclidean distance to calculate how similar articles to each other are. We square the distance in the denominator to increase the impact of the article similarity.
 
 In the following, we call the cleaned and enriched dataset the Guardian Article and Comment Corpus (GACC). Finally, the GACC contains approximately $547$K articles with $58.6$M comments.
