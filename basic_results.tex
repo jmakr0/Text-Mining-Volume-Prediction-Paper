@@ -1,0 +1,26 @@
+% Table 3: Precision (P), recall (R), and F1-score of the baseline, all article and metadata features, annotations of comments shown on the first page, and all combined.
+\begin{table}[]
+\centering
+\label{tbl:results_basic}
+\caption{\textmd{Precision (P), recall (R), and $F_1$-score of all basic models}}
+\vspace{-0.2cm}
+\begin{tabular}{cccccc}
+\toprule
+% \textbf{Features} &
+\specialcellbold{ID} &
+\specialcellbold{Input} &
+\specialcellbold{Model} &
+\specialcellbold{P} &
+\specialcellbold{R} &
+\specialcellbold{F$_1$} \\
+\midrule
+1 & headline & FC & .216 & .606  & .309  \\
+2 & headline & CNN & .221 & .603  & .314  \\
+3 & article & LSTM  & .228 & .493  & .302  \\
+4 & category & FC & .227 & .603  & .320  \\
+5 & time & FC  & .100 & .457  & .155  \\
+6 & text metrics & FC  & .133 & .738  & .222  \\
+7 & competitive score & FC & .112 & .917  & .197  \\
+\bottomrule
+\end{tabular}
+\end{table}
