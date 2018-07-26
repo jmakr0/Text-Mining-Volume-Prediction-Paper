@@ -1,16 +1,18 @@
 Our work is based on a dataset of the British newspaper \textit{The Guardian} that contains approximately $626$K article URLs with $61.5$M corresponding comments from $1.25$M authors. 
-The comment data provided us with the comment text itself, the author's reference, the timestamp when the comment was posted, a reference of the parent comment, and the number of upvotes. Additionally, we had the comment author's username and a dedicated reference. 
+The comment data provided us with the comment text itself, the author, the timestamp when the comment was posted, a reference of the parent comment, and the number of upvotes. Additionally, we had the comment author's username and a dedicated reference. 
 
 The comments were posted between 2006 and 2017. All $1.25$M users wrote at least one comment, $22$\% of them more than $10$, and $6$\% over $100$.
-The given articles are published in one out of $79$ categories. In total, $18$\% of all released articles are published under the category \textit{comment is free} that is used to debate contentious issues. Consequently, this category is also the most commented one. 
+The given articles are published in one out of $79$ categories. In total, $18$\% of all released articles are published under the category \textit{comment is free} which is used to debate contentious issues. Consequently, this category is also the most commented one. 
 Each of the others, e.g. \textit{sport}, \textit{music}, and \textit{politics} covers less than $7$\% in the given dataset.
 
-We assume that the number of comments of a given article is an essential feature to predict the comment volume of similar articles in the future. Fortunately, this feature could be determined by simply counting the corresponding comments of each article. Afterwards, we were able to decide if a given article was in the top $10$\% of the most commented articles within its released week.
+The number of comments of past articles is essential to predict the comment volume of similar articles in the future. 
+To decide if a given article was in the top $10$\% of the most commented articles within its released week could be determined by simply counting the corresponding comments of each article.
+%The number of comments of a given article is essential to predict the comment volume of similar articles in the future. Fortunately, this could be determined by simply counting the corresponding comments of each article. Afterwards, we were able to decide if a given article was in the top $10$\% of the most commented articles within its released week.
 
 \subsection{Data Cleaning}
 Analysing the dataset, we noticed that the distribution of the number of comments exhibited a bizarre peak at exactly $50$ comments per article. Therefore, we did not take these articles into account which reduced our dataset about $2$\% of the given articles.
 
-To avoid anomalies using features that we derived from the articles, e.g. the publication time, we removed all articles that were released on 29th of February.
+To avoid anomalies using features that we derived from the articles, e.g. the publication time, we removed a small amount of articles that were released on 29th of February.
 
 \subsection{Data Enrichment}
 To enrich our dataset, we used the offical \textit{Guardian API} to get the article text and further attributes like the category, the headline, and the publication time.
@@ -29,8 +31,8 @@ We suppose that articles that are released at a similar time and discussing a re
 	\overrightarrow{a_i}&: \text{doc2vec vector of article } i \text{ text}& \\
 \end{flalign*}
 
-The numerical value of $compet_i$ describes how many competitive articles exist to the given article $i$. Thereby, the difference of the publication time of the given articles determines how close they are published to each other. For the calculation of this feature, we've considered all articles that were released within a timespan of $\pm3$h.
-In pratice, articles will be often published at the same time which implies that the time difference can be zero. This is also the reason why we apply the derivate of the sigmoid function in the numerator.
-To decide if articles are discussing a similar topic, we've trained the \textit{doc2vec} algorithm \cite{le2014doc2vec} on our article corpus and use the euclidean distance to calculate how similar articles to each other are. We square the distance in the denominator to increase the impact of the article similarity.
+The numerical value of $compet_i$ describes how much a given article $i$ competes with all other articles. Thereby, the difference of the publication time of the given articles determines how close they are published to each other. For the calculation of this feature, we've considered all articles that were released within a timespan of $\pm3$h.
+In pratice, articles will be often published at the same time which implies that the time difference can be zero. This is also a reason why we apply the derivate of the sigmoid function in the numerator.
+To decide if articles are discussing a similar topic, we've trained the \textit{doc2vec} algorithm \cite{le2014doc2vec} on our article corpus and use the Euclidean distance to calculate how similar articles to each other are. We square the distance in the denominator to increase the impact of the article similarity.
 
 In the following, we call the cleaned and enriched dataset the Guardian Article and Comment Corpus (GACC). Finally, the GACC contains approximately $547$K articles with $58.6$M comments.
