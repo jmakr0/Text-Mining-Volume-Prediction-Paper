@@ -1,0 +1,38 @@
+\subsection{Metrics}
+We used the metrics \textit{precision} and \textit{recall} to evaluate our models. A high precision is important because every article that gets classified as an top article binds resources in a real world scenario. A high recall is important as well since we want to miss as few positives as possible. Precision and recall are equally relevant as also mentioned by Amroselli et al. therefore we used their harmonic mean, the $F_1$ score.
+As \textit{precision}, \textit{recall} and the $F_1$ score are common metrics for binary classification problems, this allows us to compare our results against existing approaches.
+
+\subsection{Basic Model Performances}
+All our BMs reach a significantly higher \textit{recall} than \textit{precision}.
+
+The model with the highest precision is BM 3 with a value of $0.228$. BM 7 reached the highest recall with $0.917$. The best overall performing model was BM 4 with an $F_1$ score of $0.320$. BM 1 to 3 also performed relatively good with F1 scores well over $0.3$.
+
+BM 1 and BM 2 get the same input. Despite the fact that BM 2 has approximately a third of the weights in the hidden layer both models have a similar performance for all three metrics.
+BEGRÜNDUNG
+
+BM 3 takes just the first $50$ words of the article text as input because we discovered that using more or even all words has no positive effect on the model's predictions. In comparison to BM 1 and 2 it reaches a worse \textit{recall} but a slightly higher \textit{precision} which leads to a similar $F_1$ score.
+BEGRÜNDUNG
+
+BM 4 is the model with the best results. This seems surprising due to the low complexity of this feature but the relatively good results can be justified with the usage frequency of the categories within the GACC. Articles assigned to the most used category have a chance of $22.8\%$ to become a weekly top article. Classifying just articles within this category as a top article already leads to a $F_1$ score of $0.292$. Using just the four categories that have the most top articles in percentage terms leads to an $F_1$ score of $0.320$ which is the same result as achieved by BM 4.
+
+BM 5 performed most badly. Its precision of $0.100$ is just as good as a random prediction. A reason for the publication time performing so badly is that $19\%$ of all articles got released on full hours as shown in (fig) and might be due to the fact that the guardian has an international readership spread over multiple time zones. Therefore this feature has close to no effect on the number of comments an article receives. Another reason is, that the day of the week has also no significant effect on the weekly article performance.
+
+BM 6 had also a small but slightly bigger effect on the article performance. This might be to the fact that just the length of a text without context has nearly no meaning.
+
+BM 7 takes just a single numeric value as input.
+BEGRÜNDUNG
+
+\subsection{Combined Models}
+As seen in the correlation matrix (fig) BM 1 and BM 2 correlate the most with a correlation value of 0.589. The same feature input explains this behaviour. The correlation between BM 3 and both BM 1 and BM 2 is relatively high as well with the values $0.289$ and $0.255$ respectively. A reason for this could be that a headline and the first 50 words of an article transport a very similar context.
+
+BM 2 is the best model using text therefore we decided to combine it with each other model. For most other models the correlation with BM 2 is low which also justifies this decision.
+The model correlating least with all other models (BM 5) has a very low $F_1$ score. Therefore we excluded it from our consideration to combine it with every other model.
+
+The models, that we created combining BM 2 with each BM 5, 6 and 7 performed almost the same as BM 2 itself. Therefore we figured that publishing time, text metrics and competitive score are no good additional features for the headline text.
+BEGRÜNDUNG
+
+Combining each BM 3 and BM 4 with BM 2 showed small improvements in performance. In consequence we combined BM 2, BM 3 and BM 4 and got our best results. The better $F_1$ score of $0.357$ was due to the improvements of the precision value and a consistent recall.
+
+Our $F_1$ score was $37\%$ higher than the presented value from Tsagikas et al. (cite) and 24% smaller than the presented value from Ambroselli et al. (cite).
+BEGRÜNDUNG  RECHTFERTIGUNG
+(TABELLE)
