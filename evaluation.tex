@@ -20,22 +20,22 @@ We suppose this occurs because of a similar context complexity which is provided
 
 \begin{figure}
 	\includegraphics[width=0.45\textwidth]{fig/top_ten_category.png}
-	\caption{\textmd{bla }}
+	\caption{\textmd{Number of articles for the $20$ categories containing most of the top articles.}}
 	\label{fig:top_ten_category}
 \end{figure}
 
-Articles assigned to the most used category have a probability of $22.8\%$ to be a top article. Classifying just these articles as a top article already leads to an $F_1$-score of $0.292$. 
-For instance, if we only classify articles within the four categories with the highest amount of top articles as a top article, we receive an $F_1$-score of $0.316$ which is almost as good as the result achieved by this model.
+Articles assigned to the most used category have a probability of $22.8\%$ to be a top article, compare to \autoref{fig:top_ten_category}. Classifying just these articles as a top article already leads to an $F_1$-score of $0.292$. 
+If we only classify articles within the four categories with the highest amount of top articles as a top article, we receive an $F_1$-score of $0.316$ which is almost as good as the result achieved by this model.
 
 \textit{Model 5} is the worst performing model. Its precision of $0.100$ is just as good as a random prediction.
 
 \begin{figure}
 	\includegraphics[width=0.45\textwidth]{fig/top_ten_time.png}
-	\caption{\textmd{bla }}
+	\caption{\textmd{Percentage of top articles per time of the day.}}
 	\label{fig:top_ten_time}
 \end{figure}
 
-One reason is that $19\%$ of all articles got released on full hours and might also be due to the fact that \textit{The Guardian} has an international readership spread over multiple time zones. Additionally, the day of the week has no significant effect on the weekly article performance. Therefore, this feature has almost no effect on the number of comments that an article receives. 
+One reason is that $19\%$ of all articles got released on full hours and might also be due to the fact that \textit{The Guardian} has an international readership spread over multiple time zones. Additionally, the day of the week has no significant effect on the weekly article performance as seen in \autoref{fig:top_ten_time}. Therefore, this feature has almost no effect on the number of comments that an article receives. 
 
 \textit{Model 6} had also a small but slightly better performance than \textit{Model 5}. 
 Either the length of the headline or the length of the article text is feasible for an accurate prediction.
