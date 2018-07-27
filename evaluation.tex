@@ -1,30 +1,41 @@
-%We used the metrics \textit{precision} and \textit{recall} to evaluate our models. 
 We use \textit{precision} and \textit{recall} to evaluate our models. 
-%A high precision is important because every article that gets classified as an top article binds resources in a real world scenario. A high recall is important as well since we want to miss as few positives as possible. 
 In practice, each article which produces a high amount of comments is more likely to bind resources of comment moderators and editors. Therefore, a high classification precision is important as well as a high recall to omit as few as possible.
-%Precision and recall are equally relevant as also mentioned by Ambroselli et al. (cite) therefore we used their harmonic mean, the $F_1$-score.
-In addition, we also use the harmonic mean, the $F_1$-score, of both metrics which are equally relevant as proposed by Ambroselli et al. \cite{ambroselli2018prediction}.
-%As \textit{precision}, \textit{recall} and the $F_1$-score are common metrics for binary classification problems, this allows us to compare our results against existing approaches.
-As \textit{precision}, \textit{recall}, and the $F_1$-score are common metrics for binary classification problems, we are enabled to compare our results against existing approaches.
+Precision and recall are equally relevant and consequently, we use the harmonic mean, the $F_1$-score, of both metrics. As \textit{precision}, \textit{recall}, and the $F_1$-score are common metrics for binary classification problems, we are enabled to compare our results against existing approaches.
 
 \subsection{Model Performances}
-All our models reach a significantly higher \textit{recall} than \textit{precision}.
+The overview of our results in \autoref{tbl:results_basic} depicts that all our models reach a significantly higher \textit{recall} than \textit{precision}.
 
-\textit{Model 3} reached the highest precision with a value of $0.228$. \textit{Model 7} reached the highest recall with $0.917$. The best overall performing model was \textit{Model 4} with an $F_1$-score of $0.320$. \textit{Model 1} to \textit{3} also performed relatively good with $F_1$-scores well over $0.3$.
+\textit{Model 3} reaches the highest \textit{precision} with a value of $0.228$, and \textit{Model 7} the highest \textit{recall} with $0.917$. \textit{Model 4} is the best overall performing model with an $F_1$-score of $0.320$. 
+%\textit{Model 1} to \textit{3} also performs relatively well with an $F_1$-scores of over $0.3$.
 
-\textit{Model 1} and \textit{Model 2} get the same input. Despite the fact that the second one has approximately a third of the weights in its hidden layer both models have a similar performance for all three metrics.
-The convolutional network can learn less features but has a much higher generalization potential through its shared weights.
+\textit{Model 1} and \textit{Model 2} process the same input. Despite the fact that the second model has approximately a third of the weights in its hidden layers, both models exhibit a similar performance for all three metrics.
+We assume that the convolutional network can learn fewer features but has a much higher generalization potential through its shared weights.
 
-\textit{Model 3} takes just the first $50$ words of the article text as input because we discovered that using more or even all words has no positive effect on the model's predictions. In comparison to \textit{Model 1} and \textit{2} it reaches a worse \textit{recall} but a slightly higher \textit{precision} which leads to a similar $F_1$-score.
-The performance is explainable by the similar context dimensionality the headline and the first words of an article can set.
+\textit{Model 3} takes the first $50$ words of the article text as input. We discovered that using more or even all words has no positive effect on the model's predictions.
 
-\textit{Model 4} achieved the best results. This seems surprising due to the low complexity of this feature but the relatively good results can be justified with the usage frequency of the categories within the GACC. Articles assigned to the most used category have a chance of $22.8\%$ to become a top article. Classifying just articles within this category as a top article already leads to a $F_1$-score of $0.292$. Using just the four categories that have the most top articles in percentage terms leads to an $F_1$-score of $0.320$ which is the same result as achieved by this model.
+Compared to \textit{Model 1} and \textit{2} it reaches a worse \textit{recall} but a slightly higher \textit{precision} which leads to a similar $F_1$-score.
+We suppose this occurs because of a similar context complexity which is provided by the headline and the first words of the article.
 
-The worst performance was achieved by \textit{Model 5}. Its precision of $0.100$ is just as good as a random prediction. A reason for the publication time performing so poorly is that $19\%$ of all articles got released on full hours and might be due to the fact that \textit{The Guardian} has an international readership spread over multiple time zones. Therefore this feature has close to no effect on the number of comments an article receives. Another reason is, that the day of the week has also no significant effect on the weekly article performance.
+\textit{Model 4} achieves the best results. This seems surprising due to the low complexity of this feature but the relatively good results can be justified with the distribution of the categories within the GACC. 
 
-\textit{Model 6} had also a small but slightly better performance. Just the length of a text without context has nearly no meaning and is therefore not feasible for an accurate prediction.
+FIGURE?
 
-\textit{Model 7} takes just a single numeric value as input. For a good performance of this model the interval of competitive scores should be divided into clear intervals that can be assigned to one class each. This is unfortunately not the case and therefore a clustering of this feature is not possible.
+Articles assigned to the most used category have a probability of $22.8\%$ to be a top article. Classifying just these articles as a top article already leads to an $F_1$-score of $0.292$. If we only use the four categories with the highest percentage of top articles, leads to an $F_1$-score of $0.320$ which is the same result as achieved by this model.
+
+
+\textit{Model 5} is the worst performing model. Its precision of $0.100$ is just as good as a random prediction.
+
+FIGURE?
+
+One reason is that $19$\% of all articles got released on full hours and might also be due to the fact that \textit{The Guardian} has an international readership spread over multiple time zones. Additionally, the day of the week has no significant effect on the weekly article performance. Therefore, this feature has almost no effect on the number of comments that an article receives. 
+
+\textit{Model 6} had also a small but slightly better performance than \textit{Model 5}. 
+Either the length of the headline or the length of the article text is feasible for an accurate prediction.
+
+\textit{Model 7} processes just a single numeric value as input. 
+
+For a good performance using the competitive score it would be necessary to be able to divide the values into distinct intervals that can be assigned to each class.
+Unfortunately, the competitive score distribution of top articles is similar to the overall distribution of the competitive score.
 
 \input{basic_results.tex}
 
