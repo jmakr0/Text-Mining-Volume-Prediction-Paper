@@ -18,39 +18,54 @@ We suppose this occurs because of a similar context complexity which is provided
 
 \textit{Model 4} achieves the best results. This seems surprising due to the low complexity of this feature but the relatively good results can be justified with the distribution of the categories within the GACC. 
 
-FIGURE?
+\begin{figure}
+	\includegraphics[width=0.45\textwidth]{fig/top_ten_category.png}
+	\caption{\textmd{bla }}
+	\label{fig:top_ten_category}
+\end{figure}
 
-Articles assigned to the most used category have a probability of $22.8\%$ to be a top article. Classifying just these articles as a top article already leads to an $F_1$-score of $0.292$. If we only use the four categories with the highest percentage of top articles, leads to an $F_1$-score of $0.320$ which is the same result as achieved by this model.
-
+Articles assigned to the most used category have a probability of $22.8\%$ to be a top article. Classifying just these articles as a top article already leads to an $F_1$-score of $0.292$. 
+For instance, if we only classify articles within the four categories with the highest amount of top articles as a top article, we receive an $F_1$-score of $0.316$ which is almost as good as the result achieved by this model.
 
 \textit{Model 5} is the worst performing model. Its precision of $0.100$ is just as good as a random prediction.
 
-FIGURE?
+\begin{figure}
+	\includegraphics[width=0.45\textwidth]{fig/top_ten_time.png}
+	\caption{\textmd{bla }}
+	\label{fig:top_ten_time}
+\end{figure}
 
-One reason is that $19$\% of all articles got released on full hours and might also be due to the fact that \textit{The Guardian} has an international readership spread over multiple time zones. Additionally, the day of the week has no significant effect on the weekly article performance. Therefore, this feature has almost no effect on the number of comments that an article receives. 
+One reason is that $19\%$ of all articles got released on full hours and might also be due to the fact that \textit{The Guardian} has an international readership spread over multiple time zones. Additionally, the day of the week has no significant effect on the weekly article performance. Therefore, this feature has almost no effect on the number of comments that an article receives. 
 
 \textit{Model 6} had also a small but slightly better performance than \textit{Model 5}. 
 Either the length of the headline or the length of the article text is feasible for an accurate prediction.
 
-\textit{Model 7} processes just a single numeric value as input. 
-
-For a good performance using the competitive score it would be necessary to be able to divide the values into distinct intervals that can be assigned to each class.
+\textit{Model 7} processes just a single numeric value as input. For a good performance using the competitive score it would be necessary to be able to divide the values into distinct intervals that can be assigned to each class.
 Unfortunately, the competitive score distribution of top articles is similar to the overall distribution of the competitive score.
 
 \input{basic_results.tex}
 
 \subsection{Combined Models}
-As seen in the correlation matrix (Figure \ref{fig:correlation_matrix}) \textit{Model 1} and \textit{Model 2} correlate the most with a correlation value of 0.589. The same feature input explains this behaviour. The correlation between \textit{Model 3} and both \textit{Model 1} and \textit{Model 2} is also relatively high with the values $0.289$ and $0.255$ respectively. A reason for this could be that a headline and the first 50 words of an article transport a very similar context.
+As seen in \autoref{fig:correlation_matrix}, \textit{Model 1} and \textit{2} correlate the most with a value of $0.589$ which is due to processing the same input feature.
+The correlation between \textit{Model 3} and both \textit{Model 1} and \textit{2} is also relatively high because the headline and the first $50$ words of the article provide a similar context.
 
-\textit{Model 2} is the best model using text therefore we decided to combine it with each other model. For most other models the correlation with \textit{Model 2} is low which also justifies this decision.
-\textit{Model 5} which is correlating least with all other models has a very low $F_1$ score. Therefore we excluded it from our consideration to combine it with every other model.
+We combine \textit{Model 2} with each other model because it exhibits the best results processing text input and has a low correlation to other models.
+\textit{Model 5} which is correlating least with all other models has a very low $F_1$ score. Therefore, we exclude it from our consideration to combine it with every other model.
 
-The models, that we created combining \textit{Model 2} with each \textit{Model 5}, \textit{6} and \textit{7} performed almost the same as \textit{Model 2} itself. Therefore, we figured that publishing time, text metrics and competitive score are unqualified features for the headline text.
+The combination of \textit{Model 2} with each \textit{Model 5}, \textit{6}, and \textit{7} doesn't have a better performance than \textit{Model 2} itself. 
+Thus, we notice that the publishing time, text metrics, and competitive score are unqualified additional features for the headline text.
 
-Combining each \textit{Model 3} and \textit{Model 4} with \textit{Model 2} showed small improvements in performance. In consequence we combined \textit{model 2}, \textit{Model 3} and \textit{Model 4} and got our best results. The better $F_1$-score of $0.357$ was due to the improvements of the precision value and a consistent recall.
+Combining each \textit{Model 3} and \textit{4} with \textit{Model 2} shows performance improvements. Consequently, we combine these models and receive our best \textit{precision} and $F_1$-score.
 
-Our $F_1$-score was $37\%$ higher than the presented value from Tsagikas et al. \cite{tsagkias2009predicting} and $24\%$ smaller than the presented value from Ambroselli et al. \cite{ambroselli2018prediction}.
+Compared to other approaches, our $F_1$-score is $37\%$ higher than the presented value from Tsagikas et al. \cite{tsagkias2009predicting} and $24\%$ smaller than the values from Ambroselli et al. \cite{ambroselli2018prediction}. 
 
-BEGRÜNDUNG \& RECHTFERTIGUNG
+- other dataset
+- other user behavior
+	- one nation
+	- less diverse
+	- readership uniform
+
+%The German audience acts more commonly than a international readership.
+%Wetterdaten für deutschland konstant -> International schwieriger
 
 \input{combined_results.tex}
