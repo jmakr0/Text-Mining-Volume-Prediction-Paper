@@ -1,5 +1,11 @@
-We used the metrics \textit{precision} and \textit{recall} to evaluate our models. A high precision is important because every article that gets classified as an top article binds resources in a real world scenario. A high recall is important as well since we want to miss as few positives as possible. Precision and recall are equally relevant as also mentioned by Ambroselli et al. (cite) therefore we used their harmonic mean, the $F_1$-score.
-As \textit{precision}, \textit{recall} and the $F_1$-score are common metrics for binary classification problems, this allows us to compare our results against existing approaches.
+%We used the metrics \textit{precision} and \textit{recall} to evaluate our models. 
+We use \textit{precision} and \textit{recall} to evaluate our models. 
+%A high precision is important because every article that gets classified as an top article binds resources in a real world scenario. A high recall is important as well since we want to miss as few positives as possible. 
+In practice, each article which produces a high amount of comments is more likely to bind resources of comment moderators and editors. Therefore, a high classification precision is important as well as a high recall to omit as few as possible.
+%Precision and recall are equally relevant as also mentioned by Ambroselli et al. (cite) therefore we used their harmonic mean, the $F_1$-score.
+In addition, we also use the harmonic mean, the $F_1$-score, of both metrics which are equally relevant as proposed by Ambroselli et al. \cite{ambroselli2018prediction}.
+%As \textit{precision}, \textit{recall} and the $F_1$-score are common metrics for binary classification problems, this allows us to compare our results against existing approaches.
+As \textit{precision}, \textit{recall}, and the $F_1$-score are common metrics for binary classification problems, we are enabled to compare our results against existing approaches.
 
 \subsection{Model Performances}
 All our models reach a significantly higher \textit{recall} than \textit{precision}.
