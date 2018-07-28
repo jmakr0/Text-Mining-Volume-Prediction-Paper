@@ -40,7 +40,7 @@ Additionally, the day of the week has also no significant effect on the weekly a
 \textit{Model 6} had also a small but slightly better performance than \textit{Model 5}. 
 Neither the length of the headline nor the length of the article text is feasible for an accurate prediction.
 
-\textit{Model 7} processes just a single numeric value as input. For a good performance using the competitive score it would be necessary to be able to divide the values into distinct intervals that can be assigned to each class.
+\textit{Model 7} processes just a single numeric value as input. For a good performance using the competitive score, it would be necessary to be able to divide the values into distinct intervals that can be assigned to each class.
 Unfortunately, the competitive score distribution of top articles is similar to the overall distribution of the competitive score.
 
 \subsection{Combined Models}
@@ -66,9 +66,4 @@ Finally, we point out that our results were achieved by using another dataset th
 Their data contains only articles by a German magazine. 
 Due to the English readership, \textit{The Guardian} releases its articles internationally which implies a much broader audience and discussed topics need to address this diversity. Consequently, to compare both approaches in a more appropriate way, it would be necessary to execute them on the same dataset.
 
-% Further classification improvements could be achieved by taking additional features into account: 
-% - wie lange besucher auf der seite waren
-% - interaktion auf dem artikel (scrollen, klicks)
-% - placement auf landing page
-% - advertisement
 Further classification improvements could be achieved by using a more sophisticated network architecture. A recent research approach by Conneau et al. shows that a very deep CNN architecture using character embeddings can be used for text classification \cite{conneau2016very}. Applying this method might lead to a better semantically interpretation of the text features and could result in more precise prediction.

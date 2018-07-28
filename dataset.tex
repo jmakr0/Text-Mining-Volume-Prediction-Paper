@@ -4,20 +4,20 @@ The comment data provided us with the comment text itself, the article reference
 
 The comments were posted between 2006 and 2017. All $1.25$M users wrote at least one comment, $22$\% of them more than $10$, and $6$\% over $100$.
 The given articles are published in one out of $79$ categories. In total, $18$\% of all released articles are published under the category \textit{comment is free} which is used to debate contentious issues. Consequently, this category is also the most commented one. 
-Each of the others, e.g. \textit{sport}, \textit{music}, and \textit{politics} covers less than $7$\% in the given dataset.
+Each of the others, e.g. \textit{sport}, \textit{music}, and \textit{politics} covers less than $7$\% of the given dataset.
 
 The number of comments of past articles is essential to predict the comment volume of similar articles in the future. 
 To decide if a given article was in the top $10$\% of the most commented on articles within its released week could be determined by using the corresponding comments of each article.
 
 \subsection{Data Cleaning}
-Analysing the dataset, we noticed that the distribution of the number of comments per article exhibited a bizarre peak at exactly $50$ comments. Therefore, we didn't take these articles into account which reduced our dataset size about $2$\%.
+Analysing the dataset, we noticed that the distribution of the number of comments per article exhibited a bizarre peak at exactly $50$ comments. Therefore, we didn't take these articles into account which reduced our dataset size by about $2$\%.
 
-To avoid anomalies using features that we derived from the article's publication time, we removed a small amount of articles that were released on 29th of February.
+To avoid anomalies using features that we derived from the article's publication time, we removed a small number of articles that were released on the 29th of February.
 
 \subsection{Data Enrichment}
-To enrich our dataset, we used the offical \textit{Guardian API} \footnote{\url{https://open-platform.theguardian.com}} to get the article text and further attributes like the category, the headline, and the publication time.
-Due to API restrictions we were not able to download all articles which is why the amount of articles was reduced about $11$\%.
-Furthermore, we extracted metadata like the headline and article word count, and derived time features like the day of the year, day of the week, hour, and minute from the publication date.
+To enrich our dataset, we used the official \textit{Guardian API} \footnote{\url{https://open-platform.theguardian.com}} to get the article text and further attributes like the category, the headline, and the publication time.
+Due to API restrictions, we were not able to download all the articles which is why the number of articles was reduced by about $11$\%.
+Furthermore, we extracted metadata like the headline and article word count, and derived time features like the day of the year, the day of the week, hour, and minute from the publication date.
 
 We suppose that articles that are released at a similar time and discussing a related topic are likely to share their comment volume. To take this behaviour into account, we've developed a \textit{competitive score} as an additional feature:
 
@@ -32,7 +32,7 @@ We suppose that articles that are released at a similar time and discussing a re
 \end{flalign*}
 
 The numerical value of $compet_i$ describes how much a given article $i$ competes with all other articles.
-Thereby, the difference of the publication time of the given articles determines how close they are published to each other.
+Thereby, the difference between the publication time of the given articles determines how close they are published to each other.
 In practice, articles will be often published at the same time which implies that the time difference can be zero.
 This is also a reason why we apply the derivate of the sigmoid function in the numerator.
 To decide if articles are discussing a similar topic, we've trained the \textit{Doc2Vec} algorithm \cite{le2014doc2vec} on our article corpus and use the Euclidean distance to calculate how similar articles are to each other.
