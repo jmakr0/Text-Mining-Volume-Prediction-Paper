@@ -4,13 +4,10 @@
 \pagestyle{plain} % removes running headers
 \setcopyright{none} % removes copyright information
 
-
-
-
-
 \usepackage[utf8]{inputenc}
 \usepackage{booktabs} % For formal tables
 \usepackage{array}
+\usepackage{hyperref}
 \usepackage{commath}
 \newcommand*\rotbf[1]{\rotatebox{90}{\textbf{#1}}}
 \newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
@@ -19,22 +16,12 @@
   \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}%
 }
 
-% Copyright
-%\setcopyright{none}
-%\setcopyright{acmcopyright}
-%\setcopyright{acmlicensed}
-% \setcopyright{rightsretained}
-%\setcopyright{usgov}
-%\setcopyright{usgovmixed}
-%\setcopyright{cagov}
-%\setcopyright{cagovmixed}
-
 \begin{document}
 \title{Comment Volume Prediction}
-\subtitle{Text Mining in Practice} % do we need that?
+\subtitle{Text Mining in Practice} 
 
 \author{Johannes M. Kroschewski}
-\affiliation{%
+\affiliation{
 	\institution{Hasso-Plattner-Institut,\\ University of Potsdam}
 	\streetaddress{Prof.-Dr.-Helmert-Str. 2–3}
 	\city{Potsdam} 
@@ -44,7 +31,7 @@
 \email{johannes.kroschewski@student.hpi.de}
 
 \author{Friedrich C. Schöne}
-\affiliation{%
+\affiliation{
 	\institution{Hasso-Plattner-Institut,\\ University of Potsdam}
 	\streetaddress{Prof.-Dr.-Helmert-Str. 2–3}
 	\city{Potsdam} 
@@ -53,8 +40,8 @@
 }
 \email{friedrich.schoene@student.hpi.de}
 
-\author{Nils Straßenburg}
-\affiliation{%
+\author{Nils H. Straßenburg}
+\affiliation{
   	\institution{Hasso-Plattner-Institut,\\ University of Potsdam}
 	\streetaddress{Prof.-Dr.-Helmert-Str. 2–3}
 	\city{Potsdam} 
@@ -63,12 +50,8 @@
 }
 \email{nils.strassenburg@student.hpi.de}
 
-% The default list of authors is too long for headers}
-\renewcommand{\shortauthors}{M. Kroschewski et al.}
-
-
 \begin{abstract}
-	abstract text \footnote{abstract footnote}
+
 \end{abstract}
 
 \begin{CCSXML}
