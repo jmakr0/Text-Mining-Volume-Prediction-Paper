@@ -19,7 +19,7 @@ To enrich our dataset, we used the offical \textit{Guardian API} to get the arti
 Due to API restrictions we were not able to download all articles which is why the amount of articles was reduced about $11$\%.
 Furthermore, we extracted metadata like the headline and article word count, and derived time features like the day of the year, day of the week, hour, and minute from the publication date.
 
-We suppose that articles that are released at a similar time and discussing a related topic are likely to share their comment volume. To take this behaviour into account, we've developed a \textit{competitive score} (\ref{eq:competitive_score}) as an additional feature.
+We suppose that articles that are released at a similar time and discussing a related topic are likely to share their comment volume. To take this behaviour into account, we've developed a \textit{competitive score} as an additional feature:
 
 \begin{equation} \label{eq:competitive_score}
 	compet_i = \sum_{n=1}^{j} \frac{\sigma'(t_i - t_j)}{\norm{\overrightarrow{a_i} - \overrightarrow{{a_j}}}^2}, i \neq j
