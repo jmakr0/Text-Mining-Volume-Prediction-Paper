@@ -18,7 +18,7 @@ We suppose this occurs because of a similar context complexity which is provided
 
 \textit{Model 4} achieves the best results. This seems surprising due to the low complexity of this feature but the relatively good results can be justified with the distribution of the categories within the GACC. 
 
-\begin{figure}
+\begin{figure}[h]
 	\includegraphics[width=0.45\textwidth]{fig/top_ten_category.png}
 	\caption{\textmd{Number of articles for the first $20$ categories containing most of the top articles.}}
 	\label{fig:top_ten_category}
@@ -29,7 +29,7 @@ If we only classify articles within the four categories with the highest amount 
 
 \textit{Model 5} is the worst performing model. Its precision of $0.100$ is just as good as a random prediction.
 
-\begin{figure}
+\begin{figure}[h]
 	\includegraphics[width=0.45\textwidth]{fig/top_ten_time.png}
 	\caption{\textmd{Percentage of top articles per time of the day.}}
 	\label{fig:top_ten_time}
@@ -57,11 +57,13 @@ Thus, we notice that the publishing time, text metrics, and competitive score ar
 
 Combining each \textit{Model 3} and \textit{4} with \textit{Model 2} shows performance improvements. Consequently, we combine these models and receive our best \textit{precision} and $F_1$-score.
 
-Compared to other approaches, our $F_1$-score is $37\%$ higher than the presented value from Tsagikas et al. \cite{tsagkias2009predicting} and $24\%$ smaller than the values from Ambroselli et al. \cite{ambroselli2018prediction}. 
+\input{combined_results.tex}
+
+Compared to other approaches, our $F_1$-score is $37\%$ higher than the presented value from Tsagikas et al. and $8\%$ smaller than the values from Ambroselli et al. \cite{ambroselli2018prediction}.
+
+\input{compare_results.tex}
 
 Comparing our results one should keep in mind that our models used another dataset for their predictions.
 The other results we are comparing against were achieved on a dataset containing German newspaper articles, and thus having a limited target audience and a limited range of topics.
 Moreover the language suggests that the users behave more uniformly.
 Therefore, the results are not necessarily comparable.
-
-\input{combined_results.tex}
