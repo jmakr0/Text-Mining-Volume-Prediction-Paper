@@ -1,19 +1,19 @@
 \documentclass[10pt,sigconf]{acmart}
 \settopmatter{printacmref=false} % Removes citation information below abstract
 \renewcommand\footnotetextcopyrightpermission[1]{} % removes footnote with conference information in first column
-\pagestyle{plain} % removes running headers
-\setcopyright{none} % removes copyright information
+\pagestyle{plain}
+\setcopyright{none}
 
 \usepackage[utf8]{inputenc}
-\usepackage{booktabs} % For formal tables
+\usepackage{booktabs}
 \usepackage{array}
 \usepackage{hyperref}
 \usepackage{commath}
 \newcommand*\rotbf[1]{\rotatebox{90}{\textbf{#1}}}
 \newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
-\newcommand{\specialcellbold}[2][c]{%
+\newcommand{\specialcellbold}[2][c]{
   \bfseries
-  \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}%
+  \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}
 }
 
 \begin{document}
@@ -51,7 +51,11 @@
 \email{nils.strassenburg@student.hpi.de}
 
 \begin{abstract}
-
+Modern technologies enable people to share their opinions online at any time.
+Thereby, the vast diversity of opinions requires a moderation of the discussions.
+A prediction of the comment volume for unpublished articles could consequently help moderators to estimate the workload.
+In contrast to existing work, we exclusively use deep learning to process article text and corresponding features to predict which articles will receive a large number of comments.
+Hence, we achieve similar results as state-of-the-art approaches using traditional machine learning algorithms.
 \end{abstract}
 
 \begin{CCSXML}
@@ -78,7 +82,7 @@
 \ccsdesc[500]{Computing methodologies~Information extraction}
 \ccsdesc[100]{Social and professional topics~User characteristics}
 
-\keywords{text mining}
+\keywords{Text mining}
 
 \maketitle
 
@@ -98,7 +102,6 @@
 
 \section{Conclusion}
 \input{conclusion.tex}
-
 
 \bibliographystyle{acm}
 \bibliography{sigproc} 
