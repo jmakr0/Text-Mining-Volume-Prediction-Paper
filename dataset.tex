@@ -14,9 +14,9 @@ Therefore, these articles were excluded which reduced our dataset size by about 
 To avoid anomalies using features that we derived from the article's publication time, we removed a small number of articles that were released on the 29th of February.
 
 \subsection{Data Enrichment}
-To enrich our dataset, we used the official \textit{Guardian API} \footnote{\url{https://open-platform.theguardian.com}} which provided the article text and further attributes like the category, the headline, and the publication date.
+To enrich our dataset, we used the official \textit{Guardian API} \footnote{\url{https://open-platform.theguardian.com}} which provided the article text and further attributes such as the category, the headline, and the publication date.
 Due to API restrictions, it was not possible to download all the articles hence why the number of articles was reduced by about $11$\%.
-Furthermore, we extracted metadata like the headline and article word count, and derived time features like the day of the year, the day of the week, hour, and minute from the publication date.
+Furthermore, we extracted metadata such as the headline and article word count, and derived time features such as the day of the year, the day of the week, hour, and minute from the publication date.
 
 Articles released at a similar time and discussing a similar topic will share their comment volume. To take this into account, a \textit{competitive score} was developed as an additional feature:
 
