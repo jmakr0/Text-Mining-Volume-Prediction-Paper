@@ -7,9 +7,6 @@ Articles featuring contentions issues are published in the \textit{comment is fr
 Consequently, this category is also the most commented one. 
 Each of the others, e.g. \textit{sport}, \textit{music}, and \textit{politics} cover less than $7$\% of the given dataset.
 
-The number of comments of past articles is essential to predict the comment volume of similar articles in the future. 
-To decide if a given article was in the top $10$\% of the most commented on articles within its released week was determined by using the number of comments for that article.
-
 \subsection{Data Cleaning}
 Analysis of the dataset revealed that the distribution of the number of comments per article exhibited an anomalous peak at exactly $50$ comments. 
 Therefore, these articles were excluded which reduced our dataset size by about $2$\%.
@@ -21,7 +18,7 @@ To enrich our dataset, we used the official \textit{Guardian API} \footnote{\url
 Due to API restrictions, it was not possible to download all the articles hence why the number of articles was reduced by about $11$\%.
 Furthermore, we extracted metadata like the headline and article word count, and derived time features like the day of the year, the day of the week, hour, and minute from the publication date.
 
-We assume that articles released at a similar time and discussing a similar topic will share their comment volume. To take this into account, a \textit{competitive score} was developed as an additional feature:
+Articles released at a similar time and discussing a similar topic will share their comment volume. To take this into account, a \textit{competitive score} was developed as an additional feature:
 
 \begin{equation} \label{eq:competitive_score}
 	compet_i = \sum_{n=1}^{j} \frac{\sigma'(t_i - t_j)}{\norm{\overrightarrow{a_i} - \overrightarrow{{a_j}}}^2}, i \neq j
@@ -39,5 +36,7 @@ In practice, articles are often published at the same time which would result in
 Application of the derivate of the sigmoid function in the numerator accounts for this.
 In order to identify articles concerning similar topics, the \textit{Doc2Vec} algorithm \cite{le2014doc2vec} was trained on our article corpus and the Euclidean distance is used to calculate how similar articles are to each other.
 The distance in the denominator is squared to increase the impact of the article similarity.
+
+To decide if a given article was in the top $10$\% of the most commented on articles within its released week was determined by using the number of comments for that article.
 
 Throughout this paper, this cleaned and enriched dataset is referred to as the Guardian Article and Comment Corpus (GACC) which contains approximately $547$K articles with $58.6$M comments.

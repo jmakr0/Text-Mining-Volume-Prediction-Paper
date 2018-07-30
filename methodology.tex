@@ -28,18 +28,15 @@ They get processed the same way as in \textit{Model 4}.
 \paragraph{Model 6} 
 Takes the word counts from the headline and the article.
 The logarithm is calculated for both of them and is used to create exponential sized bins for different lengths.
-% todo: what is the log scale?
 Each logarithm gets embedded and processed as in \textit{Model 5} and \textit{6}.
 
 \paragraph{Model 7} 
 Takes the competitive score as defined in \autoref{eq:competitive_score} and processes it through a dense layer as well as a batch normalization layer.
 
 \subsection{Training}
-The GACC was divided into training, validation, and test sets
-using a $0.70/0.15/0.15$  distribution with respect to the time of publication.
+The GACC was divided into training, validation, and test sets using a $0.70/0.15/0.15$  distribution with respect to the time of publication.
 
-% todo: specify why its imbalanced
-Due to a strongly imbalanced training set, we use class weights to penalise our models in case of a wrong classification.
+Due to the strongly imbalanced class sizes of the training set, we use class weights to penalise our models in case of a wrong classification.
 During the training, they influence the weighting of the loss indirectly proportional to the class size of a giving training sample.
 
 \subsection{Combined Architectures}
@@ -54,4 +51,3 @@ The correlations between each model pair are shown in Figure \ref{fig:correlatio
 	\caption{\textmd{Correlation matrix of our models using the test data set.}}
 	\label{fig:correlation_matrix}
 \end{figure}
-%todo: achsen beschriften! model nr / correlation
