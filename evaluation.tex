@@ -66,17 +66,17 @@ This shows that, besides the headline text, the publishing time, text metrics, a
 Combining each \textit{Model 3} and \textit{4} with \textit{Model 2} shows performance improvements. 
 These combinations produced the best \textit{precision} and highest $F_1$-score.
 
-Compared to the results of other approaches (\autoref{tbl:compare_approaches}), our $F_1$-score is $42\%$ higher than the value by Tsagikas et al. implemented by Ambroselli et al. and $5\%$ lower than the values obtained by Ambroselli et al. \cite{ambroselli2018prediction}.
+Compared to the results of other approaches (\autoref{tbl:compare_approaches}), our $F_1$-score is $42\%$ higher than the value by Tsagikas et al.\ implemented by Ambroselli et al.\ and $5\%$ lower than the values obtained by Ambroselli et al.\ \cite{ambroselli2018prediction}.
 
 \input{compare_results.tex}
 
-Finally, it is important to establish that our results were achieved using another dataset than that Ambroselli et al. used for both approaches.
+Finally, it is important to establish that our results were achieved using another dataset than that Ambroselli et al.\ used for both approaches.
 Their data contained only articles by a German magazine. 
 \textit{The Guardian} releases its articles internationally which implies a much broader audience and meaning that topics are of a more diverse nature.
-Tsagikas et al. took time features, metadata, e.g. article length, similar article count, several reference counts, e.g. count of referred people, and temperature data into account.
-Ambroselli et al. additionally used publisher information such as the author and the editor.
+Tsagikas et al.\ took time features, metadata, e.g.\ article length, similar article count, several reference counts, e.g.\ count of referred people, and temperature data into account.
+Ambroselli et al.\ additionally used publisher information such as the author and the editor.
 To compare both approaches appropriately, it would be necessary to use the same dataset and the same range of features.
 
 Further classification improvements could be achieved by using a more sophisticated network architecture. 
-A recent approach taken by Conneau et al. shows that a very deep CNN architecture using character embeddings can be used for text classification \cite{conneau2016very}. 
+A recent approach taken by Conneau et al.\ shows that a very deep CNN architecture using character embeddings can be used for text classification \cite{conneau2016very}. 
 Applying this method could lead to a more coherent semantic interpretation of the text features which would result in more precise prediction.
