@@ -1,7 +1,7 @@
 We use \textit{precision} and \textit{recall} to evaluate our models. 
 In practice, each article which produces a high number of comments is more likely to bind resources of comment moderators and editors.
-Therefore, a high classification precision is important as well as a high recall to omit as few classifications as possible.
-Precision and recall are equally relevant and consequently, we use the harmonic mean, the $F_1$-score, of both metrics. As \textit{precision}, \textit{recall}, and the $F_1$-score are common metrics for binary classification problems, it is possible to compare our results against those of existing approaches.
+Therefore, a high classification \textit{precision} is important as well as a high \textit{recall} to omit as few classifications as possible.
+\textit{Precision} and \textit{recall} are equally relevant and consequently, we use the harmonic mean, the $F_1$-score, of both metrics. As \textit{precision}, \textit{recall}, and the $F_1$-score are common metrics for binary classification problems, it is possible to compare our results against those of existing approaches.
 
 \subsection{Model Performances}
 An overview of our results in \autoref{tbl:results_basic} depicts that all our models reach a significantly higher \textit{recall} than \textit{precision}.
@@ -15,7 +15,7 @@ We assume that the convolutional network (\textit{Model 2}) can learn fewer feat
 
 \textit{Model 3} takes the first $50$ words of the article text as input. 
 We found that inputing more or even all words from an article does not improve the ability of this model to predict comment volume.
-\textit{Model 3} gave lower \textit{recall} values while achieving slightly higher precision in comparison to those seen with \textit{Model 1} and \textit{2}. 
+\textit{Model 3} gave lower \textit{recall} values while achieving slightly higher \textit{precision} in comparison to those seen with \textit{Model 1} and \textit{2}. 
 The $F_1$-score is therefore, similar for these first three models.
 This is probably due to the similar context complexity provided by the words of the headline and the first 50 words of the article.
 
@@ -32,7 +32,7 @@ This explains why \textit{Model 4} has such a hight $F_1$-score.
 	\label{fig:top_ten_category}
 \end{figure}
 
-\textit{Model 5} has a precision value of $0.100$ which is the same as a random prediction.
+\textit{Model 5} has a \textit{precision} value of $0.100$ which is the same as a random prediction.
 It is possible that this is a result of $19\%$ of articles being released on full hours and also that \textit{The Guardian} has a readership spread located across multiple time zones.
 Therefore, the time of the day has almost no effect on the number of comments that an article receives as seen in \autoref{fig:top_ten_time}. 
 Additionally, the day of the week also has no significant effect on the weekly article performance. 
@@ -70,7 +70,7 @@ Compared to the results of other approaches (\autoref{tbl:compare_approaches}), 
 
 \input{compare_results.tex}
 
-Finally, it is important to establish that our results were achieved using another dataset than that Ambroselli et al.\ used for both approaches.
+Finally, it is important to establish that our results were achieved using another dataset to that which Ambroselli et al.\ used for both approaches.
 Their data contained only articles by a German magazine. 
 \textit{The Guardian} releases its articles internationally which implies a much broader audience and meaning that topics are of a more diverse nature.
 Tsagikas et al.\ took time features, metadata, e.g.\ article length, similar article count, several reference counts, e.g.\ count of referred people, and temperature data into account.

@@ -5,7 +5,7 @@ The comments were posted between 2006 and 2017. All $1.25$M users wrote at least
 The given articles are published in one out of $79$ categories. 
 Articles featuring contentions issues are published in the \textit{comment is free} category, accounting $18$\% of all articles released.
 Consequently, this category is also the most commented one. 
-Each of the others, e.g.\ \textit{sport}, \textit{music}, and \textit{politics} cover less than $7$\% of the given dataset.
+Each of the others, e.g.\ \textit{sport}, \textit{music}, and \textit{politics} account for less than $7$\% of articles in the given dataset.
 
 \subsection{Data Cleaning}
 Analysis of the dataset revealed that the distribution of the number of comments per article exhibited an anomalous peak at exactly $50$ comments. 
@@ -31,7 +31,7 @@ Articles released at a similar time and discussing a similar topic will share th
 \end{flalign*}
 
 The numerical value of $compet_i$ describes how much a given article $i$ competes with all other articles.
-Thereby, the difference between the publication time of the given articles shows how close they are published to each other.
+The difference between the publication time of the given articles shows how close they are published to each other.
 In practice, articles are often published at the same time which would result in a time difference of zero.
 Application of the derivate of the sigmoid function in the numerator accounts for this.
 In order to identify articles concerning similar topics, the \textit{Doc2Vec} algorithm \cite{le2014doc2vec} was trained on our article corpus and the Euclidean distance is used to calculate how similar articles are to each other.
